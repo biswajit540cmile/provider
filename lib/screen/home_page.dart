@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
         child: ElevatedButton(
             onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShowData()),
+                  MaterialPageRoute(builder: (context) =>  ShowData()),
                 ),
             child: const Text("Click Me")),
       ),
