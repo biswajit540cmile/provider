@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       //create:
       providers: [
         ChangeNotifierProvider(create: (context) => TodoController(),)
-
       ],
       child: const MaterialApp(
         home: HomePage(),

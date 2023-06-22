@@ -5,7 +5,6 @@ import '../model/todo_model.dart';
 class TodoService {
   Future<List<Todo>> getAll(int page) async {
     var url = 'https://jsonplaceholder.typicode.com/todos?_page=$page&_size=10';
-    //print(page);
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {
@@ -20,7 +19,6 @@ class TodoService {
         }).toList();
        // page++;
         return todos;
-
     }
     return [];
   }
