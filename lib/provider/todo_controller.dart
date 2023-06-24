@@ -3,15 +3,9 @@ import '../model/todo_model.dart';
 import '../services/todo_services.dart';
 
 class TodoController extends ChangeNotifier {
-
-  @override
-  void dispose() {
-
-    // TODO: implement dispose
-    super.dispose();
-    todos.clear();
-  }
   ScrollController scrollController = ScrollController();
+  ScrollController scrollController1 = ScrollController();
+
   final _service = TodoService(); //its the instance of api definition class
  // bool isLoading = false;
   List<Todo> todos = []; //_todos
@@ -23,6 +17,14 @@ class TodoController extends ChangeNotifier {
       if (scrollController.position.maxScrollExtent ==
           scrollController.position.pixels) {
        getAllTodos();
+      }
+    });
+  }
+  forMoreData1() {
+    scrollController1.addListener(() {
+      if (scrollController1.position.maxScrollExtent ==
+          scrollController1.position.pixels) {
+        getAllTodos();
       }
     });
   }
@@ -40,3 +42,4 @@ else {
 }
   }
 }
+TodoController todoController = TodoController();

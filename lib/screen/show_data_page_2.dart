@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:providers/screen/show_data_page_2.dart';
 import '../provider/todo_controller.dart';
 
-class ShowData extends StatefulWidget {
-  const ShowData({super.key});
+class ShowData1 extends StatefulWidget {
+  const ShowData1({super.key});
 
   @override
-  State<ShowData> createState() => _ShowDataState();
+  State<ShowData1> createState() => _ShowData1State();
 }
 
-class _ShowDataState extends State<ShowData> {
+class _ShowData1State extends State<ShowData1> {
   late TodoController provider;
   @override
   void initState() {
@@ -18,37 +17,24 @@ class _ShowDataState extends State<ShowData> {
     super.initState();
     provider= Provider.of<TodoController>(context, listen: false);
   }
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   context.read<TodoController>().dispose();
-  //   print("Disposed");
-  // }
   @override
   Widget build(BuildContext context) {
-    Provider.of<TodoController>(context, listen: false).getAllTodos();
-    Provider.of<TodoController>(context, listen: false).forMoreData();
+    provider.getAllTodos();
+    provider.forMoreData1();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue,
         title:  Consumer<TodoController>(
             builder: (context, value, child){
-              return Text('Provider API   ${value.page}');}),
-
-      actions: [
-        InkWell(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ShowData1(),)),
-            child: const Center(child: Text("Next"))),
-      ],
+            return Text('Provider API   ${value.page}');}),
       ),
-      
       body: Consumer<TodoController>(
         builder: (context, value, child) {
           return SingleChildScrollView(
-            controller: value.scrollController,
+            controller: value.scrollController1,
             child:Column(
               children: [
-                Center(child: Text("Track page No. ${value.page}"),),
+                Center(child: Text("Track page No. ${provider.page}"),),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
