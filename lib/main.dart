@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiProvider(
         providers: [
+          ///initialize the TodoController which is ChangeNotifierProvider Type.
           ChangeNotifierProvider(create: (context) => TodoController()),
     ],
 

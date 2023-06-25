@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import '../model/todo_model.dart';
 import '../services/todo_services.dart';
 
+///TodoController which share data with View Screens
 class TodoController extends ChangeNotifier {
   ScrollController scrollController = ScrollController();
   ScrollController scrollController1 = ScrollController();
 
   final _service = TodoService(); //its the instance of api definition class
- // bool isLoading = false;
-  List<Todo> todos = []; //_todos
+  List<Todo> todos = [];
   var page =1;
   var loadData = true;
-  //List<Todo> get todos => _todos; //using Encapsulation
+  //List<Todo> get todos => _todos;
   forMoreData() {
     scrollController.addListener(() {
       if (scrollController.position.maxScrollExtent ==
@@ -33,11 +33,13 @@ class TodoController extends ChangeNotifier {
     final response = await _service.getAll(page);
 if(response.isEmpty){
   loadData = false;
+  ///Replacement of SetState
   notifyListeners();
 }
 else {
   todos.addAll(response); //_todos
   page++;
+  ///Replacement of SetState
   notifyListeners();
 }
   }
